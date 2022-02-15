@@ -22,6 +22,7 @@ namespace Pole_ITA
     {
         int a;
         int b;
+        int[] pole = new int[100];
 
         public MainWindow()
         {
@@ -31,9 +32,29 @@ namespace Pole_ITA
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Random random = new Random();
-            a = random.Next(1,100);
-            b = random.Next(1, 100);
-            txtVypis.Text = a.ToString() + "; " + b.ToString();
+            //a = random.Next(1,100);
+            //b = random.Next(1, 100);
+            //txtVypis.Text = a.ToString() + "; " + b.ToString();
+            
+            //nastavení hodnot prvků pole
+            for(int i = 0; i < pole.Length; i++)
+            {
+                pole[i] = random.Next(1, 100);
+            }
+            
+            //vypsání prvků pole do string
+            txtVypis.Text = "";
+            for(int i = 0; i < pole.Length; i++)
+            {
+                txtVypis.Text += pole[i].ToString() + "; ";
+            }
+
+            //enter
+            txtVypis.Text += "\r\n";
+            txtVypis.Text += "\r\n";
+
+            //jiný způsob vypsání prvků pole do string
+            txtVypis.Text += string.Join("; ", pole);
         }
     }
 }
